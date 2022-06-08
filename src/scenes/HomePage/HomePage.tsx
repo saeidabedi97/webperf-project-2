@@ -1,4 +1,5 @@
-import { Hero, Section, SectionList, Form, Container } from "./components";
+import { Hero, Section, SectionList, Container, Form } from "./components";
+import React, { lazy } from "react";
 
 const sections = Array(10)
   .fill(null)

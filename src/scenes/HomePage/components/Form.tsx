@@ -1,18 +1,17 @@
 import { useForm, Controller } from "react-hook-form";
 import { PhoneNumber, PhoneNumberUtil } from "google-libphonenumber";
 import DatePicker from "react-datepicker";
-import moment from "moment";
+import dayDate from "dayjs";
 
 import "react-datepicker/dist/react-datepicker.css";
 import s from "./Form.module.css";
 
 function daysUntilBirthday(date: Date) {
-  const m1 = moment(date);
-  m1.set({ year: moment().year() });
-  if (m1.isBefore(moment())) {
+  const m1 = dayDate(date);
+  if (m1.isBefore(dayDate())) {
     m1.add(1, "y");
   }
-  return m1.diff(moment(), "days");
+  return m1.diff(dayDate(), "days");
 }
 
 function validatePhoneNumber(value: string) {
@@ -25,7 +24,7 @@ function validatePhoneNumber(value: string) {
   }
 }
 
-export const Form = () => {
+const Form = () => {
   const {
     register,
     control,
@@ -108,3 +107,5 @@ export const Form = () => {
     </section>
   );
 };
+
+export default Form;
