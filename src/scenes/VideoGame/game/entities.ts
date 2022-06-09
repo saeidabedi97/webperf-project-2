@@ -15,8 +15,7 @@ export function createEnemy(enemySpawn: EnemySpawn, spawnTime: number): Entity {
 
   const el = document.createElement("div");
   el.className = classnames(s.entity, s.entityEnemy, s[`entityEnemy${style}`]);
-  el.style.transform = `translateX(${x})	`;
-  el.style.transform = `translateY(${y})`;
+  el.style.transform = `translate(${x}px, ${y}px)`;
 
   return {
     type: "enemy",

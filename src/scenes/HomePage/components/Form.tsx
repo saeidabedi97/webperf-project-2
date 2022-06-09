@@ -14,14 +14,23 @@ function daysUntilBirthday(date: Date) {
   return m1.diff(dayDate(), "days");
 }
 
-function validatePhoneNumber(value: string) {
-  const instance = PhoneNumberUtil.getInstance();
+async function validatePhoneNumber(value: string) {
+  const instance = await getLibPhoneNumber();
   try {
     const phoneNumber = instance.parseAndKeepRawInput(value, "IS");
     return instance.isValidNumberForRegion(phoneNumber as PhoneNumber, "IS");
   } catch (e) {
     return false;
   }
+}
+let phoneNumberPromise: null | Promise<PhoneNumberUtil> = null;
+function getLibPhoneNumber() {
+  if (!phoneNumberPromise) {
+    phoneNumberPromise = import("google-libphonenumber").then((lib) =>
+      lib.PhoneNumberUtil.getInstance()
+    );
+  }
+  return phoneNumberPromise;
 }
 
 const Form = () => {

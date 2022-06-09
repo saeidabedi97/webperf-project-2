@@ -32,7 +32,7 @@
 /* wheels */
 .turret::before,
 .turret::after {
-  content: '';
+  content: "";
   position: absolute;
   width: 20px;
   height: 20px;
@@ -93,6 +93,8 @@
 
 .entity {
   position: absolute;
+  will-change: transform;
+  contain: content;
 }
 
 .entityShot {
@@ -101,6 +103,7 @@
   margin: -6px 0 0 -6px;
   border-radius: 50%;
   background: #ffa500;
+  contain: content;
 }
 
 .entityEnemy {
@@ -108,20 +111,25 @@
   height: 40px;
   margin: -20px 0 0 -30px;
   background: #ffffff;
+  contain: content;
 }
 
 .entityEnemyRed {
   background: #ff0000;
+  contain: content;
 }
 
 .entityEnemyGreen {
   background: #00ff00;
+  contain: content;
 }
 
 .entityEnemyPurple {
   background: #ff00ff;
+  contain: content;
 }
 
 .entityEnemyBlue {
   background: #0000ff;
+  contain: content;
 }
